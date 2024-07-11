@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>URL Shortener</title>
+</head>
+<body>
+  <h1>URL Shortened Successfully</h1>
+  <p>Original URL: <a href="<%= originalUrl %>"><%= originalUrl %></a></p>
+  <p>Short URL: <a href="/<%= shortUrl %>">http://localhost:3000/<%= shortUrl %></a></p>
+  <p>QR Code:</p>
+  <img src="<%= qrCodeData %>" alt="QR Code">
+  <a href="/">Shorten another URL</a>
+</body>
+</html>
+

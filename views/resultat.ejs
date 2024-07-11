@@ -1,0 +1,17 @@
+<%- include("./partials/header.ejs", {title: "resultat"}) %>
+  
+<h1>URL Shortened Successfully</h1>
+<div class="contenair">
+  <div class="shorterAnQRcode">
+    <p>Original URL: <a href="<%= url.originalUrl %>" target="_blank"><%= url.originalUrl %></a></p>
+    <p>Short URL: <a href="<%= url.originalUrl %>" target="_blank"><%= url.shortUrl %></a></p>
+    <p>QR Code:</p>
+    <img src="<%= url.qrCodeData %>" alt="QR Code" >
+    
+    <div class="buttonCreateNewUrl">
+      <a class="btnItem" href="/">Shorten another URL</a>
+    </div>
+  </div>
+</div>
+
+<%- include("./partials/footer.ejs") %>
