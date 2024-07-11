@@ -18,6 +18,8 @@ router.post('/shorten', async (req, res) => {
   const qrCodeData = await QRCode.toDataURL(`http://localhost:3000/${shortUrl}`);
 
   res.render('result', { shortUrl, originalUrl, qrCodeData });
+  db.query(`INSERT INTO url(longurl, shorturl, qrcode) 
+    VALUES(${originalUrl}, ${shortUrl}, ${qrCodeData})`);
 });
 
 router.get('/:shortUrl', (req, res) => {
@@ -30,15 +32,6 @@ router.get('/:shortUrl', (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
-  try {
-    const result = await db.query('SELECT * FROM users');
-    res.json(result.rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Internal Server Error');
-  }
-});
 
 module.exports = router;
 

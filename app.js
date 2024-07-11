@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 const indexRouter = require('./routers/index');
-const db = require('./db.js');
 
 
 app.set('view engine', 'ejs');
