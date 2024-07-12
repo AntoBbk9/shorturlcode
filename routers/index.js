@@ -18,8 +18,9 @@ router.post('/shorten', async (req, res) => {
   const qrCodeData = await QRCode.toDataURL(`http://localhost:3000/${shortUrl}`);
 
   res.render('result', { shortUrl, originalUrl, qrCodeData });
-  db.query(`INSERT INTO url(longurl, shorturl, qrcode) 
-    VALUES(${originalUrl}, ${shortUrl}, ${qrCodeData})`);
+
+   await db.query(`INSERT INTO url(longurl, shorturl, qrcode) 
+    VALUES($1, $2, $3)`, [originalUrl, shortUrl, qrCodeData]);
 });
 
 router.get('/:shortUrl', (req, res) => {
